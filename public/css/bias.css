@@ -1,0 +1,424 @@
+ :root {
+            /* Brand */
+            --primary-color: #004aad;
+            --primary-hover: #003780;
+            --primary-soft: #e4edf9;
+
+            /* Backgrounds */
+            --bg-main: #ffffff;
+            --bg-page: #f3f4f6;
+            --bg-subtle: #f9fafb;
+
+            /* Borders */
+            --sidebar-border: #e0e4ec;
+            --input-border: #d1d5db;
+
+            /* Inputs */
+            --input-bg: #f9fafb;
+
+            /* Hover */
+            --item-hover: #eef2ff;
+
+            /* Text */
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-muted-icon: #9ca3af;
+
+            /* Status colors */
+            --success-color: #16a34a;
+            --warning-color: #f59e0b;
+            --error-color: #dc2626;
+
+            /* Radiuses & shadows */
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        /* =========================================================
+           🟦 BASE / GLOBAL
+           ========================================================= */
+        body {
+            background: var(--bg-page);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .container-main {
+            max-width: 1200px;
+        }
+
+        /* =========================================================
+           🟦 PAGE HEADER
+           ========================================================= */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--sidebar-border);
+        }
+
+        .btn-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.18s ease;
+            padding: 8px 14px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid transparent;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .btn-back:hover {
+            color: var(--primary-color);
+            background-color: var(--bg-main);
+            border-color: var(--sidebar-border);
+        }
+
+        .page-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-title i {
+            color: var(--primary-color);
+        }
+
+        /* =========================================================
+           🟦 CARD STYLING
+           ========================================================= */
+        .card-custom {
+            background: var(--bg-main);
+            border-radius: var(--radius);
+            border: 1px solid var(--sidebar-border);
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .card-custom:hover {
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        .card-header-custom {
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--sidebar-border);
+            padding: 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0 !important;
+        }
+
+        .card-body-custom {
+            padding: 1.5rem;
+        }
+
+        /* =========================================================
+           🟦 SECTION TITLES & TYPOGRAPHY
+           ========================================================= */
+        .section-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .subsection-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* =========================================================
+           🟦 STATUS BADGES & INDICATORS
+           ========================================================= */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid transparent;
+        }
+
+        .status-fair {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success-color);
+            border-color: rgba(22, 163, 74, 0.2);
+        }
+
+        .status-unfair {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--error-color);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .status-review {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-color);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .status-neutral {
+            background: rgba(156, 163, 175, 0.1);
+            color: var(--text-secondary);
+            border-color: rgba(156, 163, 175, 0.2);
+        }
+
+        /* =========================================================
+           🟦 STAT CARDS & METRICS
+           ========================================================= */
+        .stat-card {
+            background: var(--bg-subtle);
+            border: 1px solid var(--sidebar-border);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-soft);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* =========================================================
+           🟦 PROGRESS BARS & RANGE INDICATORS
+           ========================================================= */
+        .fairness-scale {
+            background: var(--bg-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .scale-progress {
+            height: 12px;
+            background: var(--bg-main);
+            border-radius: 6px;
+            border: 1px solid var(--sidebar-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scale-progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .scale-marker {
+            position: absolute;
+            top: -4px;
+            width: 3px;
+            height: 20px;
+            background: var(--text-primary);
+            transform: translateX(-50%);
+        }
+
+        .scale-zones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .scale-zone {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: center;
+            flex: 1;
+        }
+
+        /* =========================================================
+           🟦 CHARTS & VISUALIZATIONS
+           ========================================================= */
+        .chart-container {
+            background: var(--bg-main);
+            border: 1px solid var(--sidebar-border);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* =========================================================
+           🟦 TABLES
+           ========================================================= */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .data-table th {
+            background: var(--bg-subtle);
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--sidebar-border);
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--sidebar-border);
+            color: var(--text-primary);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: var(--item-hover);
+        }
+
+        /* =========================================================
+           🟦 ALERTS & EMPTY STATES
+           ========================================================= */
+        .alert-custom {
+            border-radius: var(--radius-sm);
+            border: 1px solid;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+      
+      
+
+        /* =========================================================
+           🟦 RESPONSIVE DESIGN
+           ========================================================= */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-body-custom {
+                padding: 1rem;
+            }
+
+            .chart-container {
+                padding: 1rem;
+            }
+        }
+
+        /* =========================================================
+           🟦 ANIMATIONS
+           ========================================================= */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }

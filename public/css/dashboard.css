@@ -1,0 +1,253 @@
+:root {
+            --bg-main: #ffffff;
+            --bg-sidebar: #f7f7f8;
+            --sidebar-border: #e4e4e7;
+            --input-bg: #e9e9ea;
+            --input-border: #d1d1d1;
+            --item-hover: #f3f3f4;
+
+            --btn-primary: #111111;
+            --btn-primary-hover: #000000;
+
+            --text-primary: #111;
+            --text-secondary: #666;
+
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3fef6;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .layout {
+            display: flex;
+            height: 100%;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--sidebar-border);
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .app-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-title::before {
+           
+            font-size: 32px;
+        }
+
+        /* Search bar container */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            color: #777;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius);
+            padding: 8px 12px 8px 34px;
+            font-size: 14px;
+        }
+
+        .search-input:focus {
+            background: #ffffff;
+            border-color: #bcbcbc;
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* History items */
+        .history-item {
+            padding: 14px 12px;
+            background: #ffffff;
+            border: 1px solid #ececec;
+            border-radius: var(--radius);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: background 0.2s ease;
+        }
+
+        .history-item:hover {
+            background: var(--item-hover);
+            cursor: pointer;
+        }
+
+        .history-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .history-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .menu-button {
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            color: #777;
+        }
+
+        /* MAIN AREA (right panel) */
+        .main {
+            flex: 1;
+            background: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #main-content {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .welcome-box {
+            text-align: center;
+            max-width: 700px;
+            margin-top: 40px;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .welcome-sub {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .new-button {
+            background: var(--btn-primary);
+            color: white;
+            padding: 12px 36px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .new-button:hover {
+            background: var(--btn-primary-hover);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .delete-btn {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.2s ease-in;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--sidebar-border);
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        input,
+        select {
+            border-radius: var(--radius);
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--text-primary);
+            box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-submit {
+            background: var(--btn-primary);
+            color: white;
+            border-radius: var(--radius);
+            padding: 12px;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background: var(--btn-primary-hover);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
