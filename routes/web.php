@@ -11,6 +11,12 @@ use App\Http\Controllers\BiasController;
 | Public Routes (no login)
 |--------------------------------------------------------------------------
 */
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations executed!';
+});
 
 // Visiting the root → go to login page
 Route::get('/', function () {
