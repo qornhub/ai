@@ -9,21 +9,9 @@ use Illuminate\Support\Facades\Artisan;
 
 
 
-Route::get('/run-migrate', function () {
-    try {
-        Artisan::call('migrate', ['--force' => true]);
-
-        return response()->json([
-            'status' => 'ok',
-            'artisan_output' => Artisan::output(),
-        ]);
-    } catch (\Throwable $e) {
-        return response()->json([
-            'status' => 'error',
-            'message' => $e->getMessage(),
-            'code' => $e->getCode(),
-        ], 500);
-    }
+Route::get('/force-migrate', function () {
+    Artisan::call('migrate:fresh', ['--force' => true]);
+    return nl2br(Artisan::output());
 });
 
 // Visiting the root → go to login page
