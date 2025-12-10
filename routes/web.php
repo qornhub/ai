@@ -5,17 +5,25 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BiasController;
-
-/*
-|--------------------------------------------------------------------------
-| Public Routes (no login)
-|--------------------------------------------------------------------------
-*/
 use Illuminate\Support\Facades\Artisan;
 
+
+
 Route::get('/run-migrate', function () {
-    Artisan::call('migrate', ['--force' => true]);
-    return 'Migrations executed!';
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+
+        return response()->json([
+            'status' => 'ok',
+            'artisan_output' => Artisan::output(),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+            'code' => $e->getCode(),
+        ], 500);
+    }
 });
 
 // Visiting the root → go to login page
