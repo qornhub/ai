@@ -73,14 +73,11 @@
 <div class="w-100" style="max-width: 1200px; margin: 0 auto 40px auto;">
 @endif
 
-
 <h3 class="fw-bold text-center mb-4" style="color: var(--text-primary);">
     AI Business Financing Application
 </h3>
 
-
 <form method="POST" action="{{ route('ai.predict') }}" class="js-ai-form">
-
     @csrf
 
     {{-- ============================= --}}
@@ -114,47 +111,45 @@
                        value="{{ old('business_registration_no') }}" required>
             </div>
 
-           <div class="col-md-6">
-    <label>Business Type</label>
-    <div style="position:relative;">
-        <select name="business_type" class="form-select" style="padding-right:40px;" required>
-            <option value="halal" {{ old('business_type')=='halal'?'selected':'' }}>Halal</option>
-            <option value="non-halal" {{ old('business_type')=='non-halal'?'selected':'' }}>Non-Halal</option>
-            <option value="mixed" {{ old('business_type')=='mixed'?'selected':'' }}>Mixed</option>
-        </select>
-        <i class="fas fa-chevron-down"
-            style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                   pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+            <div class="col-md-6">
+                <label>Business Type</label>
+                <div style="position:relative;">
+                    <select name="business_type" class="form-select" style="padding-right:40px;" required>
+                        <option value="halal" {{ old('business_type')=='halal'?'selected':'' }}>Halal</option>
+                        <option value="non-halal" {{ old('business_type')=='non-halal'?'selected':'' }}>Non-Halal</option>
+                        <option value="mixed" {{ old('business_type')=='mixed'?'selected':'' }}>Mixed</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
 
             <div class="col-md-6">
-    <label>Industry Category</label>
-    <div style="position:relative;">
-        <select name="industry_category" class="form-select" style="padding-right:40px;" required>
-            <option value="F&B">Food & Beverage</option>
-            <option value="retail">Retail</option>
-            <option value="transport">Transport</option>
-            <option value="manufacturing">Manufacturing</option>
-            <option value="services">Services</option>
-        </select>
-        <i class="fas fa-chevron-down"
-            style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                   pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+                <label>Industry Category</label>
+                <div style="position:relative;">
+                    <select name="industry_category" class="form-select" style="padding-right:40px;" required>
+                        <option value="F&B" {{ old('industry_category')=='F&B'?'selected':'' }}>Food & Beverage</option>
+                        <option value="retail" {{ old('industry_category')=='retail'?'selected':'' }}>Retail</option>
+                        <option value="transport" {{ old('industry_category')=='transport'?'selected':'' }}>Transport</option>
+                        <option value="manufacturing" {{ old('industry_category')=='manufacturing'?'selected':'' }}>Manufacturing</option>
+                        <option value="services" {{ old('industry_category')=='services'?'selected':'' }}>Services</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
 
             <div class="col-md-6">
                 <label>Years in Business</label>
                 <input type="number" name="years_in_business"
-                       min="0" class="form-control" value="{{ old('years_in_business') }}" required>
+                       min="0" max="50"
+                       class="form-control"
+                       value="{{ old('years_in_business') }}" required>
             </div>
         </div>
     </div>
-
-
 
     {{-- ============================= --}}
     {{-- 2. FINANCIAL DATA            --}}
@@ -166,30 +161,32 @@
             <div class="col-md-6">
                 <label>Annual Revenue (RM)</label>
                 <input type="number" name="annual_revenue" class="form-control"
-                       min="0" value="{{ old('annual_revenue') }}" required>
+                       min="0" max="50000000" step="0.01"
+                       value="{{ old('annual_revenue') }}" required>
             </div>
 
             <div class="col-md-6">
                 <label>Net Profit (RM)</label>
                 <input type="number" name="net_profit" class="form-control"
+                       min="-10000000" max="10000000" step="0.01"
                        value="{{ old('net_profit') }}" required>
             </div>
 
             <div class="col-md-6">
                 <label>Monthly Cashflow (RM)</label>
                 <input type="number" name="monthly_cashflow" class="form-control"
-                       min="0" value="{{ old('monthly_cashflow') }}" required>
+                       min="0" max="5000000" step="0.01"
+                       value="{{ old('monthly_cashflow') }}" required>
             </div>
 
             <div class="col-md-6">
                 <label>Existing Liabilities (RM)</label>
                 <input type="number" name="existing_liabilities" class="form-control"
-                       min="0" value="{{ old('existing_liabilities') }}" required>
+                       min="0" max="20000000" step="0.01"
+                       value="{{ old('existing_liabilities') }}" required>
             </div>
         </div>
     </div>
-
-
 
     {{-- ============================= --}}
     {{-- 3. FINANCING INFORMATION     --}}
@@ -201,57 +198,57 @@
             <div class="col-md-6">
                 <label>Financing Amount (RM)</label>
                 <input type="number" name="financing_amount" class="form-control"
-                       min="0" required>
+                       min="0" max="5000000" step="0.01"
+                       value="{{ old('financing_amount') }}" required>
             </div>
 
             <div class="col-md-6">
                 <label>Profit Rate (%)</label>
                 <input type="number" step="0.01" name="profit_rate"
-                       class="form-control" required>
+                       min="0" max="30"
+                       class="form-control"
+                       value="{{ old('profit_rate') }}" required>
             </div>
 
             <div class="col-md-6">
                 <label>Tenure (Months)</label>
                 <input type="number" name="tenure_months" class="form-control"
-                       min="1" required>
+                       min="1" max="120"
+                       value="{{ old('tenure_months') }}" required>
             </div>
 
             <div class="col-md-6">
-    <label>Financing Purpose</label>
-    <div style="position:relative;">
-        <select name="financing_purpose" class="form-select" style="padding-right:40px;" required>
-            <option value="working_capital">Working Capital</option>
-            <option value="equipment">Equipment</option>
-            <option value="renovation">Renovation</option>
-            <option value="expansion">Expansion</option>
-            <option value="others">Others</option>
-        </select>
-        <i class="fas fa-chevron-down"
-           style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                  pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+                <label>Financing Purpose</label>
+                <div style="position:relative;">
+                    <select name="financing_purpose" class="form-select" style="padding-right:40px;" required>
+                        <option value="working_capital" {{ old('financing_purpose')=='working_capital'?'selected':'' }}>Working Capital</option>
+                        <option value="equipment" {{ old('financing_purpose')=='equipment'?'selected':'' }}>Equipment</option>
+                        <option value="renovation" {{ old('financing_purpose')=='renovation'?'selected':'' }}>Renovation</option>
+                        <option value="expansion" {{ old('financing_purpose')=='expansion'?'selected':'' }}>Expansion</option>
+                        <option value="others" {{ old('financing_purpose')=='others'?'selected':'' }}>Others</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
 
             <div class="col-md-12">
-    <label>Islamic Contract Type</label>
-    <div style="position:relative;">
-        <select name="contract_type" class="form-select" style="padding-right:40px;" required>
-            <option value="Murabahah">Murabahah</option>
-            <option value="Ijarah">Ijarah</option>
-            <option value="Musharakah">Musharakah</option>
-            <option value="Tawarruq">Tawarruq</option>
-        </select>
-        <i class="fas fa-chevron-down"
-           style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                  pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+                <label>Islamic Contract Type</label>
+                <div style="position:relative;">
+                    <select name="contract_type" class="form-select" style="padding-right:40px;" required>
+                        <option value="Murabahah" {{ old('contract_type')=='Murabahah'?'selected':'' }}>Murabahah</option>
+                        <option value="Ijarah" {{ old('contract_type')=='Ijarah'?'selected':'' }}>Ijarah</option>
+                        <option value="Musharakah" {{ old('contract_type')=='Musharakah'?'selected':'' }}>Musharakah</option>
+                        <option value="Tawarruq" {{ old('contract_type')=='Tawarruq'?'selected':'' }}>Tawarruq</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
         </div>
     </div>
-
-
 
     {{-- ============================= --}}
     {{-- 4. CREDIT & RISK INDICATORS  --}}
@@ -263,26 +260,24 @@
             <div class="col-md-6">
                 <label>Credit Score (300–900)</label>
                 <input type="number" name="credit_score" class="form-control"
-                       min="300" max="900" value="{{ old('credit_score') }}" required>
+                       min="300" max="900"
+                       value="{{ old('credit_score') }}" required>
             </div>
 
-          <div class="col-md-6">
-    <label>Past Default?</label>
-    <div style="position:relative;">
-        <select name="past_default" class="form-select" style="padding-right:40px;" required>
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </select>
-        <i class="fas fa-chevron-down"
-           style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                  pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+            <div class="col-md-6">
+                <label>Past Default?</label>
+                <div style="position:relative;">
+                    <select name="past_default" class="form-select" style="padding-right:40px;" required>
+                        <option value="0" {{ old('past_default')=='0'?'selected':'' }}>No</option>
+                        <option value="1" {{ old('past_default')=='1'?'selected':'' }}>Yes</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
         </div>
     </div>
-
-
 
     {{-- ============================= --}}
     {{-- 5. COLLATERAL                --}}
@@ -292,40 +287,35 @@
 
         <div class="row g-3">
             <div class="col-md-6">
-    <label>Collateral Type</label>
-    <div style="position:relative;">
-        <select name="collateral_type" class="form-select" style="padding-right:40px;" required>
-            <option value="none">None</option>
-            <option value="property">Property</option>
-            <option value="vehicle">Vehicle</option>
-            <option value="inventory">Inventory</option>
-            <option value="cash">Cash</option>
-        </select>
-        <i class="fas fa-chevron-down"
-           style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
-                  pointer-events:none; color:#6b7280; font-size:14px;"></i>
-    </div>
-</div>
-
+                <label>Collateral Type</label>
+                <div style="position:relative;">
+                    <select name="collateral_type" class="form-select" style="padding-right:40px;" required>
+                        <option value="none" {{ old('collateral_type')=='none'?'selected':'' }}>None</option>
+                        <option value="property" {{ old('collateral_type')=='property'?'selected':'' }}>Property</option>
+                        <option value="vehicle" {{ old('collateral_type')=='vehicle'?'selected':'' }}>Vehicle</option>
+                        <option value="inventory" {{ old('collateral_type')=='inventory'?'selected':'' }}>Inventory</option>
+                        <option value="cash" {{ old('collateral_type')=='cash'?'selected':'' }}>Cash</option>
+                    </select>
+                    <i class="fas fa-chevron-down"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                              pointer-events:none; color:#6b7280; font-size:14px;"></i>
+                </div>
+            </div>
 
             <div class="col-md-6">
                 <label>Collateral Value (RM)</label>
                 <input type="number" name="collateral_value" class="form-control"
-                       min="0" required>
+                       min="0" max="20000000" step="0.01"
+                       value="{{ old('collateral_value') }}" required>
             </div>
         </div>
     </div>
 
-
-
     {{-- SUBMIT --}}
     <button type="submit" class="btn btn-submit w-100 mt-3 js-submit-form">
-    Predict Approval
-</button>
-
-
+        Predict Approval
+    </button>
 </form>
-
 
 {{-- ===================== --}}
 {{-- VALIDATION ERRORS    --}}
@@ -340,7 +330,6 @@
         </ul>
     </div>
 @endif
-
 
 @if($isAjax)
 </div>

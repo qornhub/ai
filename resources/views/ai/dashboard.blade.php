@@ -211,8 +211,7 @@
 
             <div id="main-content">
                 <div class="welcome-box">
-                    <div class="welcome-title">AI-powered loan approval prediction system specifically tailored for
-                        business financing</div>
+                    <div class="welcome-title">AI-powered Business Financing prediction system </div>
                     <div class="welcome-sub">Click “New Application” to begin analysing a financing application.</div>
 
                     <button type="button" class="new-button js-new-application" data-url="{{ route('ai.form') }}">
